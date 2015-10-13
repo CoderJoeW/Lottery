@@ -21,14 +21,14 @@ class Lottery extends PluginBase{
   $winT = $this->getConfig()->get("winning-number");
   if(strtolower($cmd) == "lottery"){
    $numbers = $this->getConfig()->get("lotto-numbers");
-   //debug line 23
+   //debug line 24
    $draw = array_rand($numbers);
    
    $ticket = $numbers[$draw];
    
    $sender->sendMessage("Your ticket number is" . " " . $ticket);
    if($ticket == $winT){
-    //debug line 30
+    //debug line 31
     $this->getServer()->broadcastMessage($player . " " . "Got a winning lottery ticket" . " " . "Ticket Number:" . "§6" . $ticket);
     $id = $this->getConfig()->get("item-id");
     $damage = $this->getConfig()->get("item-damage");
