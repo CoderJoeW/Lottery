@@ -10,6 +10,7 @@ use pocketmine\item\Item;
 use pocketmine\Player;
 use pocketmine\event\event\PlayerInteractEvent;
 use pocketmine\tile\Sign;
+use pocketmine\event\block\SignChangeEvent;
 
 class Lottery extends PluginBase{
 
@@ -45,8 +46,8 @@ class Lottery extends PluginBase{
    }
   }
  }
-
- public function lottoGame(PlayerInteractEvent $event){
+ 
+ public function onSignChange(SignChangeEvent $event){
   $block = $event->getPlayer()->getLevel()->getTile($event->getBlock());
   $player = $event->getServer()->getPlayer()->getName();
   if($block instanceof Sign){
@@ -58,6 +59,15 @@ class Lottery extends PluginBase{
     );
     $player->sendMessage("§1§l[Lottery]" . " " . "§6Lottery sign created");
    }
+  }
+ }
+ 
+ public function lottoGame(PlayerInteractEvent $event){
+  $block = $event->getPlayer()->getLevel()->getTile($event->getBlock());
+  $player = $event->getServer()->getPlayer()->getName();
+  if($block instanceof Sign){
+   $signtext = $block->getText();
+   
    if($signtext[0] == "§6[Lottery]"){
     if($signtext[1] == "§bTap to play"){
      $cmd = "lottery";
