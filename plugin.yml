@@ -3,4 +3,9 @@ api: 1.12.0
 main: FlamingGenius\Lottery\Lottery
 author: FlamingGenius
 description: Lottery minigame for pocketmine
+version: 1.0.0
+commands:
+ lottery:
+  usage: "/lottery"
+
 
