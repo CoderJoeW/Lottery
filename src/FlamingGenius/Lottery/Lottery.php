@@ -50,27 +50,13 @@ class Lottery extends PluginBase implements Listener{
   }
  }
  
- public function onSignChange(SignChangeEvent $event){
-  $player = $event->getServer()->getPlayer()->getName();
-  if($event->getLine(0) == "[Lottery]"){
-   if($signtext[0] == "[Lottery]"){
-    $event->setText("§6[Lottery]","§bTap to play");
-    $player->sendMessage("§1§l[Lottery]" . " " . "§6Lottery sign created");
-   }
-  }
- }
- 
- public function lottoGame(PlayerInteractEvent $event){
-  $block = $event->getPlayer()->getLevel()->getTile($event->getBlock()->getId("68"),$event->getBlock()->getId("63"));
-  $player = $event->getServer()->getPlayer()->getName();
-  if($block instanceof Sign){
-   $signtext = $block->getText();
-   
-   if($signtext[0] == "§6[Lottery]"){
-    if($signtext[1] == "§bTap to play"){
-     $cmd = "lottery";
-     $this->getServer()->dispatchCommand($sender,$cmd);
-    }
+ public function signChange(SignChangeEvent $event){
+  if($event->getBlock()->getId() == 323 || $event->getBlock()->getId() == 68 || $event->getBlock()->getId() == 63){
+   $sign = $event->getPlayer()->getLevel()->getTile($event->getBlock());
+   $sign = $event->getLines();
+   if($sign[0] == "[lottery]"){
+    $event->setLines("§l§6[Lottery]"," "," "," ");
+    $this->getServer()->broadcastMessage("§bLottery game sign created");
    }
   }
  }
