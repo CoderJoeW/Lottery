@@ -6,6 +6,7 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\item\Item;
 
 class Lottery extends PluginBase{
 
@@ -32,6 +33,12 @@ class Lottery extends PluginBase{
    if($ticket == $winT){
     $player = $this->getServer()->getPlayer()->getName();
     $this->getServer()->broadcastMessage($player . " " . "Got a winning lottery ticket");
+    $id = $this->getConfig()->get("item-id");
+    $damage = $this->getConfig()->get("item-damage");
+    $amount = $this->getConfig()->get("item-amount");
+    $item = Item::get($id,$amount,$damage);
+    $player->getInvetory()->addItem($item);
+    $sender->sendMessage("You have recieved" . $amount . $id);
    }
    else{
     $sender->sendMessage("Sorry your ticket is not a winning number");
