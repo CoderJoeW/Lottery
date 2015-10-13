@@ -8,6 +8,8 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\item\Item;
 use pocketmine\Player;
+use pocketmine\event\event\PlayerInteractEvent;
+use pocketmine\tile\Sign;
 
 class Lottery extends PluginBase{
 
@@ -46,6 +48,29 @@ class Lottery extends PluginBase{
    $sender->sendMessage("§1§l[Lottery]" . " " . "§6To play the lottery please type /lottery");
   }
  }
+
+ public function lottoGame(PlayerInteractEvent $event){
+  $block = $event->getPlayer()->getLevel()->getTile($event->getBlock());
+  $player = $event->getServer()->getPlayer()->getName();
+  if($block instanceof Sign){
+   $signtext = $block->getText();
+   if($signtext[0] == "[Lottery]"){
+    $block->setText(
+     "§6[Lottery]",
+     "§bTap to play"
+    );
+    $player->sendMessage("§1§l[Lottery]" . " " . "§6Lottery sign created");
+   }
+   if($signtext[0] == "§6[Lottery]"){
+    if($signtext[1] == "§bTap to play"){
+     $cmd = "lottery";
+     $this->getServer()->dispatchCommand(CommandSender $sender,$cmd);
+    }
+   }
+  }
+ }
+
+
 
 
 
