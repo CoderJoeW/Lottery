@@ -15,7 +15,7 @@ class Lottery extends PluginBase{
  }
  
  public function onCommand(CommandSender $sender, Command $command, $label, array $args){
-  $cmd = $this->command->getName();
+  $cmd = $command->getName();
   $winT = $this->getConfig()->get("winning-number");
   if(strtolower($cmd) == "lottery"){
    $numbers = array(
