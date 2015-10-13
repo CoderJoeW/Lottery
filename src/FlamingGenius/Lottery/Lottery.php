@@ -41,9 +41,9 @@ class Lottery extends PluginBase{
    elseif($ticket != $winT){
     $sender->sendMessage("§1§l[Lottery]" . "§4Sorry your ticket is not a winning number");
    }
-   if($args[0] == help){
-    $sender->sendMessage("§1§l[Lottery]" . " " . "§6To play the lottery please type /lottery");
-   }
+  }
+  if($args[0] == help){
+   $sender->sendMessage("§1§l[Lottery]" . " " . "§6To play the lottery please type /lottery");
   }
  }
 
