@@ -34,7 +34,7 @@ class Lottery extends PluginBase{
     $damage = $this->getConfig()->get("item-damage");
     $amount = $this->getConfig()->get("item-amount");
     $item = Item::get($id,$damage,$amount);
-    $sender->getInvetory()->addItem($item);
+    $sender->getInventory()->addItem($item);
     $sender->sendMessage("You recieved" . " " . $amount . " " . $id);
    }
    else{
