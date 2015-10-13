@@ -4,13 +4,19 @@ winning-number: "4062"
 
 #This section is rewards for winning
 
-#Id of item to give
-item-id: " "
-#Damage item does
-item-damage: " "
-#Amount of item to give
-item-amount: " "
+##Id of item to give
+item-id: "256" ###default iron shov
+##Damage item does
+item-damage: "0"
+##Amount of item to give
+item-amount: "1"
 
 
+#This section contains the actual possible numbers for the game
+lotto-numbers: [
+ "4062","2332","1127","1975",
+ "8458","9883","4762","3038",
+ "8459","7111","3858","8814"
+]
 
 ...
