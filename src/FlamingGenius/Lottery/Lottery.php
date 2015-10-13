@@ -38,7 +38,7 @@ class Lottery extends PluginBase{
     $sender->sendMessage("You recieved" . " " . $amount . " " . $id);
    }
    else{
-    $sender->sendMessage("Sorry your ticket is not a winning number");
+    $sender->sendMessage("Sorry, your ticket is not a winning number");
    }
   }
  }
@@ -46,9 +46,3 @@ class Lottery extends PluginBase{
 
 
 }
-
-
-
-
-
-?>
