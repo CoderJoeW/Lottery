@@ -4,8 +4,12 @@ winning-number: "4062"
 
 #This section is rewards for winning
 
-##Id of item to give
-item-id: "256" ###default iron shov
+##This is the item pool an item will
+##be randomly selected from the items
+##in the pool and given to the winner
+item-id: [
+"256"
+]
 ##Damage item does
 item-damage: "0"
 ##Amount of item to give
