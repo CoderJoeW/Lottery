@@ -16,6 +16,7 @@ class Lottery extends PluginBase{
 
  public function onEnable(){
   $this->saveDefaultConfig();
+  $this->getServer()->getPluginManager()->registerEvents($this, $this);
  }
  
  public function onCommand(CommandSender $sender, Command $command, $label, array $args){
