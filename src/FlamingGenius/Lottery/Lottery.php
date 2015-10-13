@@ -26,20 +26,23 @@ class Lottery extends PluginBase{
    
    $ticket = $numbers[$draw];
    
-   $sender->sendMessage("§4Your ticket number is" . " " . $ticket);
+   $sender->sendMessage("§1§l[Lottery]" . "§4Your ticket number is" . " " . $ticket);
    if($ticket == $winT){
     
-    $this->getServer()->broadcastMessage("§b" . $player . " " . "§aGot a winning lottery ticket" . " " . "Ticket Number:" . "§6" . $ticket);
+    $this->getServer()->broadcastMessage("§1§l[Lottery]" . "§b" . $player . " " . "§aGot a winning lottery ticket" . " " . "Ticket Number:" . "§6" . $ticket);
     $id = $this->getConfig()->get("item-id");
     $rid = array_rand($id);
     $damage = $this->getConfig()->get("item-damage");
     $amount = $this->getConfig()->get("item-amount");
     $item = Item::get($rid,$damage,$amount);
     $sender->getInventory()->addItem($item);
-    $sender->sendMessage("§aYou recieved" . " " . $amount . " " . $id);
+    $sender->sendMessage("§1§l[Lottery]" . "§aYou recieved" . " " . $amount . " " . $id);
    }
-   else{
-    $sender->sendMessage("§4Sorry your ticket is not a winning number");
+   elseif($ticket != $winT){
+    $sender->sendMessage("§1§l[Lottery]" . "§4Sorry your ticket is not a winning number");
+   }
+   if($args[0] == help){
+    $sender->sendMessage("§1§l[Lottery]" . " " . "§6To play the lottery please type /lottery");
    }
   }
  }
