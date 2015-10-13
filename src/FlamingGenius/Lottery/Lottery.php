@@ -11,8 +11,10 @@ use pocketmine\Player;
 use pocketmine\event\event\PlayerInteractEvent;
 use pocketmine\tile\Sign;
 use pocketmine\event\block\SignChangeEvent;
+use pocketmine\event\Event;
+use pocketmine\event\Listener;
 
-class Lottery extends PluginBase{
+class Lottery extends PluginBase implements Listener{
 
  public function onEnable(){
   $this->saveDefaultConfig();
