@@ -8,7 +8,7 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\item\Item;
 use pocketmine\Player;
-//debug line 11
+
 class Lottery extends PluginBase{
 
  public function onEnable(){
