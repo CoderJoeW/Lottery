@@ -21,24 +21,25 @@ class Lottery extends PluginBase{
   $winT = $this->getConfig()->get("winning-number");
   if(strtolower($cmd) == "lottery"){
    $numbers = $this->getConfig()->get("lotto-numbers");
-   //debug line 24
+   //debug line 23
    $draw = array_rand($numbers);
    
    $ticket = $numbers[$draw];
    
-   $sender->sendMessage("Your ticket number is" . " " . $ticket);
+   $sender->sendMessage("§4Your ticket number is" . " " . $ticket);
    if($ticket == $winT){
-    //debug line 31
-    $this->getServer()->broadcastMessage($player . " " . "Got a winning lottery ticket" . " " . "Ticket Number:" . "§6" . $ticket);
+    //debug line 30
+    $this->getServer()->broadcastMessage("§b" . $player . " " . "§aGot a winning lottery ticket" . " " . "Ticket Number:" . "§6" . $ticket);
     $id = $this->getConfig()->get("item-id");
+    $rid = array_rand($id);
     $damage = $this->getConfig()->get("item-damage");
     $amount = $this->getConfig()->get("item-amount");
-    $item = Item::get($id,$damage,$amount);
+    $item = Item::get($rid,$damage,$amount);
     $sender->getInventory()->addItem($item);
-    $sender->sendMessage("You recieved" . " " . $amount . " " . $id);
+    $sender->sendMessage("§aYou recieved" . " " . $amount . " " . $id);
    }
    else{
-    $sender->sendMessage("Sorry your ticket is not a winning number");
+    $sender->sendMessage("§4Sorry your ticket is not a winning number");
    }
   }
  }
