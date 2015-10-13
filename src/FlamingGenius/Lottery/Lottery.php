@@ -55,7 +55,8 @@ class Lottery extends PluginBase implements Listener{
    $sign = $event->getPlayer()->getLevel()->getTile($event->getBlock());
    $sign = $event->getLines();
    if($sign[0] == "[lottery]"){
-    $event->setText("§l§6[Lottery]","§aTap to play"," "," ");
+    $event->setLine(0,"§l§6[Lottery]");
+    $event->setLine(1,"§aTap To Play");
     $this->getServer()->broadcastMessage("§bLottery game sign created");
    }
   }
