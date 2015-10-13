@@ -51,17 +51,28 @@ class Lottery extends PluginBase implements Listener{
  }
  
  public function signChange(SignChangeEvent $event){
-  if($event->getBlock()->getId() == 323 || $event->getBlock()->getId() == 68 || $event->getBlock()->getId() == 63){
+  if($event->getBlock()->getId() == 68 || $event->getBlock()->getId() == 63){
    $sign = $event->getPlayer()->getLevel()->getTile($event->getBlock());
    $sign = $event->getLines();
    if($sign[0] == "[lottery]"){
     $event->setLine(0,"§l§6[Lottery]");
     $event->setLine(1,"§aTap To Play");
+    $event->setLine(2,"Winners:" . $x);
     $this->getServer()->broadcastMessage("§bLottery game sign created");
    }
   }
  }
 
+ public function onGamePlay(PlayerInteractEvent $event){
+  if($event->getBlock()->getId() == 68 || $event->getBlock()->getId() == 63){
+   $sign = $event->getPlayer()->getLevel()->getTile($event->getBlock());
+   $sign = $event->getLines();
+   if($sign[0] == "§l§6[Lottery]"){
+    $cmd = "lottery";
+    $event->getServer()->dispatchCommand($sender,$cmd);
+   }
+  }
+ }
 
 
 
