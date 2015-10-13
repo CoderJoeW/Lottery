@@ -61,7 +61,7 @@ class Lottery extends PluginBase{
    if($signtext[0] == "§6[Lottery]"){
     if($signtext[1] == "§bTap to play"){
      $cmd = "lottery";
-     $this->getServer()->dispatchCommand(CommandSender $sender,$cmd);
+     $this->getServer()->dispatchCommand($sender,$cmd);
     }
    }
   }
