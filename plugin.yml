@@ -1,1 +1,6 @@
-name
+name: Lottery Minigame
+api: 1.12.0
+main: FlamingGenius\Lottery\Lottery
+author: FlamingGenius
+description: Lottery minigame for pocketmine
+
