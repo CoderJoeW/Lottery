@@ -1,4 +1,16 @@
 ---
+#Winning lottery number
+winning-number: "6086"
+
+#This section is rewards for winning
+
+#Id of item to give
+item-id: " "
+#Damage item does
+item-damage: " "
+#Amount of item to give
+item-amount: " "
+
 
 
 ...
