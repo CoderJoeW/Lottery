@@ -49,22 +49,19 @@ class Lottery extends PluginBase{
  }
  
  public function onSignChange(SignChangeEvent $event){
-  $block = $event->getPlayer()->getLevel()->getTile($event->getBlock());
+  $block = $event->getPlayer()->getLevel()->getTile($event->getBlock()->getId("68"),$event->getBlock()->getId("63"));
   $player = $event->getServer()->getPlayer()->getName();
   if($block instanceof Sign){
    $signtext = $block->getText();
    if($signtext[0] == "[Lottery]"){
-    $block->setText(
-     "§6[Lottery]",
-     "§bTap to play"
-    );
+    $event->setText("§6[Lottery]","§bTap to play");
     $player->sendMessage("§1§l[Lottery]" . " " . "§6Lottery sign created");
    }
   }
  }
  
  public function lottoGame(PlayerInteractEvent $event){
-  $block = $event->getPlayer()->getLevel()->getTile($event->getBlock());
+  $block = $event->getPlayer()->getLevel()->getTile($event->getBlock()->getId("68"),$event->getBlock()->getId("63"));
   $player = $event->getServer()->getPlayer()->getName();
   if($block instanceof Sign){
    $signtext = $block->getText();
