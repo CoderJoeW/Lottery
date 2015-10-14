@@ -66,7 +66,7 @@ class Lottery extends PluginBase implements Listener{
  public function onGamePlay(PlayerInteractEvent $event){
   if($event->getBlock()->getId() == 68 || $event->getBlock()->getId() == 63){
    $sign = $event->getPlayer()->getLevel()->getTile($event->getBlock());
-   $sign = $event->getText();
+   $sign = $sign->getText();
    if($sign[0] == "§l§6[Lottery]"){
     $cmd = "lottery";
     $event->getServer()->dispatchCommand($sender,$cmd);
