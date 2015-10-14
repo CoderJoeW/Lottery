@@ -69,7 +69,7 @@ class Lottery extends PluginBase implements Listener{
    $sign = $sign->getText();
    if($sign[0] == "§l§6[Lottery]"){
     $cmd = "lottery";
-    $event->getServer()->dispatchCommand($sender,$cmd);
+    $this->getServer()->dispatchCommand($sender,$cmd);
    }
   }
  }
