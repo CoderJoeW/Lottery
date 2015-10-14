@@ -15,7 +15,8 @@ use pocketmine\event\Event;
 use pocketmine\event\Listener;
 
 class Lottery extends PluginBase implements Listener{
-
+ public $x;
+ $x = 0;
  public function onEnable(){
   $this->saveDefaultConfig();
   $this->getServer()->getPluginManager()->registerEvents($this, $this);
@@ -34,7 +35,7 @@ class Lottery extends PluginBase implements Listener{
    
    $sender->sendMessage("§1§l[Lottery]" . "§4Your ticket number is" . " " . $ticket);
    if($ticket == $winT){
-    
+    $x++;
     $this->getServer()->broadcastMessage("§1§l[Lottery]" . "§b" . $player . " " . "§aGot a winning lottery ticket" . " " . "Ticket Number:" . "§6" . $ticket);
     $id = $this->getConfig()->get("item-id");
     $rid = array_rand($id);
@@ -56,7 +57,7 @@ class Lottery extends PluginBase implements Listener{
    $sign = $event->getLines();
    if($sign[0] == "[lottery]"){
     $event->setLine(0,"§l§6[Lottery]");
-    $event->setLine(1,"§aTap To Play");
+    $event->setLine(1,"§aType /lottery To Play");
     $event->setLine(2,"Winners:" . $x);
     $this->getServer()->broadcastMessage("§bLottery game sign created");
    }
@@ -76,7 +77,7 @@ class Lottery extends PluginBase implements Listener{
    
     $sender->sendMessage("§1§l[Lottery]" . "§4Your ticket number is" . " " . $ticket);
     if($ticket == $winT){
-    
+     $x++;
      $this->getServer()->broadcastMessage("§1§l[Lottery]" . "§b" . $player . " " . "§aGot a winning lottery ticket" . " " . "Ticket Number:" . "§6" . $ticket);
      $id = $this->getConfig()->get("item-id");
      $rid = array_rand($id);
