@@ -6,6 +6,6 @@ description: Lottery minigame for pocketmine
 version: 1.0.0
 commands:
  lottery:
-  usage: "/lottery"
+  description: "Play the lottery"
 
 
