@@ -68,8 +68,27 @@ class Lottery extends PluginBase implements Listener{
    $sign = $event->getPlayer()->getLevel()->getTile($event->getBlock());
    $sign = $sign->getText();
    if($sign[0] == "§l§6[Lottery]"){
-    $cmd = "lottery";
-    $this->getServer()->dispatchCommand($sender,$cmd);
+    $numbers = $this->getConfig()->get("lotto-numbers");
+   
+    $draw = array_rand($numbers);
+   
+    $ticket = $numbers[$draw];
+   
+    $sender->sendMessage("§1§l[Lottery]" . "§4Your ticket number is" . " " . $ticket);
+    if($ticket == $winT){
+    
+     $this->getServer()->broadcastMessage("§1§l[Lottery]" . "§b" . $player . " " . "§aGot a winning lottery ticket" . " " . "Ticket Number:" . "§6" . $ticket);
+     $id = $this->getConfig()->get("item-id");
+     $rid = array_rand($id);
+     $damage = $this->getConfig()->get("item-damage");
+     $amount = $this->getConfig()->get("item-amount");
+     $item = Item::get($rid,$damage,$amount);
+     $sender->getInventory()->addItem($item);
+     $sender->sendMessage("§1§l[Lottery]" . "§aYou recieved" . " " . $amount . " " . $id);
+    }
+    elseif($ticket != $winT){
+     $sender->sendMessage("§1§l[Lottery]" . "§4Sorry your ticket is not a winning number");
+    }
    }
   }
  }
