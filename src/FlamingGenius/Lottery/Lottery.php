@@ -8,7 +8,7 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\item\Item;
 use pocketmine\Player;
-use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\event\Player\PlayerInteractEvent;
 use pocketmine\tile\Sign;
 use pocketmine\event\block\SignChangeEvent;
 use pocketmine\event\Event;
@@ -66,7 +66,7 @@ class Lottery extends PluginBase implements Listener{
  public function onGamePlay(PlayerInteractEvent $event){
   if($event->getBlock()->getId() == 68 || $event->getBlock()->getId() == 63){
    $sign = $event->getPlayer()->getLevel()->getTile($event->getBlock());
-   $sign = $event->getLines();
+   $sign = $event->getText();
    if($sign[0] == "§l§6[Lottery]"){
     $cmd = "lottery";
     $event->getServer()->dispatchCommand($sender,$cmd);
